@@ -10,6 +10,8 @@ sudo apt update && sudo apt upgrade -y
 echo "Installing packages"
 
 PACKAGES=(
+    "bat"
+    "zoxide"
     "fastfetch"
     "gh"
     "curl"
