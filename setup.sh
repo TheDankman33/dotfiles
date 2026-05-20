@@ -32,7 +32,25 @@ echo "Packages installed"
 
 DOTFILES_DIR="$HOME/dotfiles"
 
-REPO_URL="https://github.com/TheDankman33/dotfiles.git
+REPO_URL="https://github.com/TheDankman33/dotfiles.git"
+
+#if [ -d "$DOTFILES_DIR" ]; then
+#    echo "DOTFILES directory already exists. Pulling latest changes..."
+#    cd "$DOTFILES_DIR"
+#    git pull origin main
+#else
+#    echo "Cloning DOTFILES repository..."
+#    git clone "$REPO_URL" "$DOTFILES_DIR"
+#fi
+
+#if [ -d "$DOTFILES_DIR" ]; then
+#   echo "📂 Updating dotfiles..."
+#    cd "$DOTFILES_DIR"
+#    git pull origin main
+#else
+#    echo "📥 Cloning dotfiles..."
+#    git clone "$REPO_URL" "$DOTFILES_DIR"
+#fi
 
 # 3. Installing Oh My Zsh
 ZSH_CUSTOM="$HOME/.oh-my-zsh/custom"
@@ -46,14 +64,14 @@ if [ ! -d "$ZSH_CUSTOM/plugins/zsh-autosuggestions" ]; then
     echo "   Downloading zsh-autosuggestions..."
     git clone https://github.com/zsh-users/zsh-autosuggestions "$ZSH_CUSTOM/plugins/zsh-autosuggestions"
 else
-    echo "zsh-autosuggestions already installed."
+    echo "   ✅ zsh-autosuggestions already installed."
 fi
 
 if [ ! -d "$ZSH_CUSTOM/plugins/zsh-syntax-highlighting" ]; then
     echo "   Downloading zsh-syntax-highlighting..."
     git clone https://github.com/zsh-users/zsh-syntax-highlighting.git "$ZSH_CUSTOM/plugins/zsh-syntax-highlighting"
 else
-    echo "zsh-syntax-highlighting already installed."
+    echo "   ✅ zsh-syntax-highlighting already installed."
 fi
 
 # ---------------------------------------------------------
@@ -65,7 +83,7 @@ if [ ! -d "$P10K_DIR" ]; then
     echo "Downloading Powerlevel10k..."
     git clone --depth=1 https://github.com/romkatv/powerlevel10k.git "$P10K_DIR"
 else
-    echo "Powerlevel10k already installed."
+    echo "✅ Powerlevel10k already installed."
 fi
 # 4. Creating symbolic links for configuration files
 
@@ -90,7 +108,7 @@ create_symlink "$DOTFILES_DIR/.zshrc" "$HOME/.zshrc"
 
 #
 if [ "$SHELL" != "$(which zsh)" ]; then
-    echo "Changing default shell to Zsh..."
+    echo "🔄 Changing default shell to Zsh..."
     chsh -s $(which zsh)
 fi
 
